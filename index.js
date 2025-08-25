@@ -6,7 +6,7 @@ const getAccessToken = require('./access_token');
 const app = express();
 app.use(express.json());
 
-// STK Push route (you can trigger via Postman or auto-call it)
+
 app.post('/stkpush', async (req, res) => {
     const accessToken = await getAccessToken();
     const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14);
@@ -41,7 +41,7 @@ app.post('/stkpush', async (req, res) => {
     }
 });
 
-// Callback route
+
 app.post('/callback', (req, res) => {
     console.log('Callback received:', JSON.stringify(req.body, null, 2));
     res.sendStatus(200);
